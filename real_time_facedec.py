@@ -1,4 +1,3 @@
-## The face detection demo for XRDS Hello World.
 ## Adapted from OpenCV examples.
 ##
 ## Instructions: the detection will start automatically from
@@ -91,10 +90,11 @@ if __name__ == '__main__':
                 cv.SaveImage("img.jpg",img)
                 im=Image.open('img.jpg')
                 height,width=im.size
+                X=(-75,-75,-75)
                 x1,x2,y1,y2=box
-                print x1,x2,y1,y2
-                region=im.crop((x1,x2,y1,y2))
-                region.save("cropped.jpg")
+                if (x1>0 and x2>0 and y1>0 and y2>0):
+                  region=im.crop((x1,x2,y1,y2))
+                  region.save("cropped.jpg")
 		
 		c = cv.WaitKey(7)
 		if c==27: # Escape pressed
